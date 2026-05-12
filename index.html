@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisasi Jaringan RNN - Sistem AI Canggih</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2 class="loading-text">Menginisialisasi Sistem RNN...</h2>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">AI RNN</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Tentang RNN</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#visualization" class="nav-link">Visualisasi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Fitur</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#simulation" class="nav-link">Simulasi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="particles-container" id="particles"></div>
+            <div class="gradient-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="typing-text"></span>
+            </h1>
+            <p class="hero-subtitle">Sistem Jaringan Neural Kecerdasan Buatan Canggih</p>
+            <p class="hero-description">
+                Rasakan kekuatan Recurrent Neural Networks - teknologi AI mutakhir yang memproses data berurutan dengan kemampuan memori dan pemahaman seperti manusia.
+            </p>
+            <button class="cta-button" onclick="scrollToSection('about')">
+                <span>Jelajahi Sekarang</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+        <div class="neural-network-bg">
+            <svg id="neural-bg" width="100%" height="100%"></svg>
+        </div>
+    </section>
+
+    <!-- About RNN Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Recurrent Neural Networks</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <div class="icon-rnn"></div>
+                    </div>
+                    <h3>Apa itu RNN?</h3>
+                    <p>Recurrent Neural Networks adalah sistem AI canggih yang dirancang untuk mengenali pola dalam urutan data, seperti teks, bicara, dan time series, dengan kemampuan memori built-in.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <div class="icon-process"></div>
+                    </div>
+                    <h3>Cara Kerja</h3>
+                    <p>RNN menggunakan loop dan hidden state untuk mempertahankan informasi tentang input sebelumnya, menciptakan bentuk memori yang menangkap ketergantungan temporal dalam data berurutan.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <div class="icon-function"></div>
+                    </div>
+                    <h3>Fungsi Utama</h3>
+                    <p>Sempurna untuk tugas yang melibatkan data berurutan seperti terjemahan bahasa, pengenalan bicara, prediksi time series, dan pemrosesan bahasa alami.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <div class="icon-advantage"></div>
+                    </div>
+                    <h3>Kelebihan</h3>
+                    <p>Excelent untuk pemrosesan data berurutan, retensi memori, dan menangani input dengan panjang variabel yang memiliki ketergantungan temporal.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <div class="icon-disadvantage"></div>
+                    </div>
+                    <h3>Keterbatasan</h3>
+                    <p>Dapat menderita vanishing gradients dan kesulitan menangkap ketergantungan jangka panjang dalam urutan yang sangat panjang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RNN Visualization Section -->
+    <section id="visualization" class="visualization">
+        <div class="container">
+            <h2 class="section-title">Visualisasi Jaringan RNN</h2>
+            <div class="viz-container">
+                <canvas id="rnnCanvas"></canvas>
+                <div class="viz-controls">
+                    <button class="control-btn" onclick="mulaiAnimasi()">Mulai Animasi</button>
+                    <button class="control-btn" onclick="resetAnimasi()">Reset</button>
+                    <button class="control-btn" onclick="ubahKecepatan()">Ubah Kecepatan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How RNN Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cara Kerja RNN</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Input Urutan</h3>
+                        <p>Data berurutan dimasukkan ke dalam jaringan satu elemen pada satu waktu, mempertahankan urutan dan hubungan temporal.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Pemrosesan Memori</h3>
+                        <p>Setiap elemen diproses sementara jaringan mempertahankan informasi dari elemen sebelumnya melalui hidden states.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Hidden State</h3>
+                        <p>Hidden state berfungsi sebagai memori jaringan, menangkap informasi tentang urutan yang telah diproses sejauh ini.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Output Prediksi</h3>
+                        <p>Berdasarkan input saat ini dan memori yang terakumulasi, jaringan menghasilkan prediksi untuk elemen berikutnya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live RNN Simulation -->
+    <section id="simulation" class="simulation">
+        <div class="container">
+            <h2 class="section-title">Simulasi RNN Langsung</h2>
+            <div class="simulation-container">
+                <div class="simulation-input">
+                    <h3>Masukkan Teks Urutan</h3>
+                    <div class="input-group">
+                        <input type="text" id="textInput" placeholder="Ketik teks Anda di sini..." maxlength="50">
+                        <button class="simulate-btn" onclick="jalankanSimulasi()">Jalankan Simulasi</button>
+                    </div>
+                    <div class="sequence-display">
+                        <h4>Input Urutan:</h4>
+                        <div id="sequenceChars" class="char-sequence"></div>
+                    </div>
+                </div>
+                <div class="simulation-visualization">
+                    <canvas id="simulationCanvas"></canvas>
+                    <div class="simulation-output">
+                        <h4>Output Prediksi:</h4>
+                        <div id="predictionResult" class="prediction-text">Menunggu input...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Aplikasi RNN</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-text"></div>
+                    </div>
+                    <h3>Prediksi Teks</h3>
+                    <p>Memprediksi kata berikutnya dalam urutan, memungkinkan autocomplete dan generasi teks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-chatbot"></div>
+                    </div>
+                    <h3>Chatbot AI</h3>
+                    <p>Memberdayakan AI percakapan yang dapat memahami dan merespons bahasa manusia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-speech"></div>
+                    </div>
+                    <h3>Pengenalan Bicara</h3>
+                    <p>Mengubah bahasa lisan menjadi teks dengan akurasi tinggi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-sentiment"></div>
+                    </div>
+                    <h3>Analisis Sentimen</h3>
+                    <p>Menganalisis teks untuk menentukan nada emosional dan sentimen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-nlp"></div>
+                    </div>
+                    <h3>Pemrosesan NLP</h3>
+                    <p>Pemrosesan Bahasa Alami untuk memahami pola bahasa manusia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Galuh Sanjaya Putra</h3>
+                    <p>NPM: 714230067</p>
+                    <p>Prodi: D4 Teknik Informatika</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <div class="icon-github"></div>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <div class="icon-linkedin"></div>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <div class="icon-email"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="glow-line"></div>
+                <p>&copy; 2024 Visualisasi Jaringan RNN. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
