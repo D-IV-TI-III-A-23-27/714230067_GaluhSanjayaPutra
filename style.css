@@ -555,7 +555,7 @@ section {
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 60px; /* move line to the left side */
     top: 0;
     bottom: 0;
     width: 3px;
@@ -565,32 +565,26 @@ section {
 }
 
 .timeline-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
+    display: block; /* stack items vertically on the right of the line */
+    margin-bottom: 3.5rem;
     position: relative;
 }
 
-.timeline-item:nth-child(odd) {
-    flex-direction: row-reverse;
-}
-
 .timeline-number {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     background: linear-gradient(45deg, var(--neon-blue), var(--purple-neon));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--primary-dark);
     position: absolute;
-    left: 50%;
+    left: 60px; /* align number with the vertical line */
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 3;
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
@@ -600,8 +594,11 @@ section {
     border: 1px solid var(--glass-border);
     padding: 2.5rem;
     border-radius: 20px;
-    width: 45%;
+    width: calc(100% - 200px); /* leave space for the left line + number */
+    margin-left: 140px; /* position content to the right of the line */
     transition: all 0.3s ease;
+    text-align: left;
+    z-index: 1;
 }
 
 .timeline-content:hover {
@@ -610,6 +607,9 @@ section {
     border-color: var(--neon-blue);
 }
 
+/* remove alternating layout; all items sit to the right of the vertical line */
+
+
 .timeline-content h3 {
     color: var(--neon-blue);
     margin-bottom: 0.8rem;
@@ -617,7 +617,7 @@ section {
 }
 
 .timeline-content p {
-    color: var(--text-secondary);
+    color: var(--text-primary); /* stronger contrast for readability */
     line-height: 1.7;
 }
 
@@ -981,9 +981,8 @@ section {
     }
 
     .timeline-item {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        padding-left: 80px;
+        display: block;
+        margin-bottom: 2.5rem;
     }
 
     .timeline-number {
@@ -992,7 +991,8 @@ section {
     }
 
     .timeline-content {
-        width: 100%;
+        width: calc(100% - 110px);
+        margin-left: 80px;
     }
 
     .footer-content {
